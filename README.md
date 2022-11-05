@@ -2,10 +2,10 @@
 Razor runtime renderer for .NET Core
 
 
-## Dependencies
+## Dependency
 - [Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/6.0.10)
 
-### Dependency installation
+#### Dependency installation
 ```
 PS C:\> dotnet add package Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation --version 6.0.10
 ```
