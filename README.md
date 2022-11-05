@@ -10,13 +10,14 @@ Razor runtime renderer for .NET Core
 PS C:\> dotnet add package Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation --version 6.0.10
 ```
 
-## Usage Example
+## Usage Example on .NET 6
 ```csharp
 using WebApp;
 using RazorRuntimeRenderer;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddRazorRuntimeRendererSupport();
+builder.Services.AddRazorRuntimeRendererSupport(); // Add service support
+
 var app = builder.Build();
 app.Map("/", async (HttpContext httpCtx) =>
 {
@@ -28,6 +29,7 @@ app.Map("/", async (HttpContext httpCtx) =>
         Name = !string.IsNullOrEmpty(nameQueryParam) ? nameQueryParam : "World",
     };
 
+    // Dynamically compile Razor from a string template and get a string result
     var html = await RazorRenderer.RenderStringAsync(httpCtx, model, @"
         @model WebApp.MyViewModel
         <html>
@@ -42,5 +44,6 @@ app.Map("/", async (HttpContext httpCtx) =>
 
     await httpCtx.Response.WriteAsync(html);
 });
+
 app.Run(); 
 ```
